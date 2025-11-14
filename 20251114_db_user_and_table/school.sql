@@ -19,3 +19,25 @@ VALUES
     ('2025-11-14 12:50', '2025-11-14 13:35', 'Физкультура')
 ;
 
+-- Поиск информации
+
+select * from timetable;
+select count(*) from timetable;
+select dtstart from timetable where thesubject='Химия';
+
+-- Упорядочивание при поиске
+
+select * from timetable order by dtstart;
+
+-- Редактирование информации
+
+update timetable set dtend='2025-11-14 11:50' where thesubject='Химия';
+
+-- Удаление информации
+
+delete from timetable where thesubject='Физкультура';
+
+-- Вложенные запросы
+
+delete from timetable where dtstart=(
+    select min(dtstart) from timetable);
